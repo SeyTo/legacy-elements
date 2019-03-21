@@ -4,6 +4,7 @@ import AlertDialog from './AlertDialog'
 import ActivityDialog from './ActivityDialog'
 import AvatarList from './AvatarList'
 import UserAvatar from './UserAvatar'
+import MsgLoader from './MsgLoader'
 
 export default function registerComponent (vue) {
   vue.component('action-bar', ActionBar)
@@ -12,4 +13,5 @@ export default function registerComponent (vue) {
   vue.component('activity-dialog', ActivityDialog)
   vue.component('avatar-list', AvatarList)
   vue.component('user-avatar', UserAvatar)
+  vue.component('msg-loader', MsgLoader)
 }
