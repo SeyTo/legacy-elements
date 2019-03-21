@@ -3,6 +3,7 @@ import Countdown from './Countdown'
 import AlertDialog from './AlertDialog'
 import ActivityDialog from './ActivityDialog'
 import AvatarList from './AvatarList'
+import UserAvatar from './UserAvatar'
 
 export default function registerComponent (vue) {
   vue.component('action-bar', ActionBar)
@@ -10,4 +11,5 @@ export default function registerComponent (vue) {
   vue.component('alert-dialog', AlertDialog)
   vue.component('activity-dialog', ActivityDialog)
   vue.component('avatar-list', AvatarList)
+  vue.component('user-avatar', UserAvatar)
 }
