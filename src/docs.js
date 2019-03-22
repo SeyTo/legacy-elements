@@ -8,8 +8,10 @@ import App from './app'
 import './styles/app.styl'
 
 import registerComponent from './components'
+import registerGeneric from './generics'
 
 registerComponent(Vue)
+registerGeneric(Vue)
 
 Vue.config.productionTip = false
 
