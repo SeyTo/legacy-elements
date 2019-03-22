@@ -27,7 +27,7 @@ export default {
     value: { default: false },
     dark: { default: true },
     left: { default: true },
-    mobileBreakPoint: { default: '800' }
+    mobileBreakPoint: { default: '1200' }
   }
 }
 </script>

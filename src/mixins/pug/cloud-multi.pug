@@ -1,0 +1,13 @@
+// create 3 line clouds in specific order
+mixin Cloud(color, top, left, rotate = '0deg', zindex = -1, scale = '1', blur='0px')
+  .cloud(
+    :style=`{
+      position: 'absolute',
+      top: '${top}', left: '${left}',
+      zIndex: '${zindex}',
+      transform: 'scale(${scale}, ${scale}) rotateZ(${rotate})',
+      filter: 'blur(${blur})'
+    }`)
+    .cloud-a(:class=`{ ${color}: true}`)
+    .cloud-b(:class=`{ ${color}: true}`)
+    .cloud-c(:class=`{ ${color}: true}`)

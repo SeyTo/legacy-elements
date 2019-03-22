@@ -1,0 +1,13 @@
+// create a single line cloud
+mixin CloudDiv(color, height = '52px', width = '50vw', translateX, translateY, rotate = '13deg', zindex = 0, radius = '32px', blur = '0px' )
+  .cloud-div(
+    :style=`{
+      width: '${width}',
+      height: '${height}',
+      zIndex: '${zindex}',
+      transform: 'translate(${translateX}, ${translateY}) rotate(${rotate})',
+      borderRadius: '${radius}',
+      filter: 'blur(${blur})'
+    }`
+    :class=`{ ${color}: true }`
+  )

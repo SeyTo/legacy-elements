@@ -1,4 +1,3 @@
-import './styles/lib.styl'
 import registerComponent from './components'
 import registerGeneric from './generics'
 import storePlugin from './stores/index.js'
