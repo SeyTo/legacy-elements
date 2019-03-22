@@ -6,7 +6,7 @@ v-toolbar(
   :absolute="false"
   height="72px"
   :color="baseColor"
-  )
+)
   v-toolbar-items
     v-btn(
       flat icon large 

@@ -7,7 +7,6 @@ console.log(storePlugin)
 const prdinsElements = {
   install (vue, args) {
     registerComponent(vue)
-    console.log('installed prdins-elements')
   },
   version: '0.0.1'
 }
