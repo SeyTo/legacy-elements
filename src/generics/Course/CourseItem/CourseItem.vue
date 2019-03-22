@@ -8,15 +8,17 @@ v-card(
   :class="{ 'elevation-5': highlighted, 'elevation-19': !highlighted }"
 ).course-item.py-3
   .cloud__contain
-    +CloudDiv('grey', '154px', '400px', '-30px', '10px', '13deg', 0, '52px')
+    +CloudDiv('primary', '154px', '400px', '-40px', '0px', '13deg', 0, '52px')
   // TODO why is card not registering clicks??
   v-layout(
     column justify-space-between 
     @click="$emit('click')"
   )
     v-card-title
-      span(v-html="course.header" style={ 'z-index': 1 }).headline.font-weight-bold
-    v-card-text(style={ 'z-index': 1 }).body-1 {{ course.excerpt }}
+      span(v-html="course.header" style={ 'z-index': 1 }).headline.font-weight-bold.accent--font
+    v-card-text(style={ 'z-index': 1 }).grey4--text.body-1 {{ course.excerpt }}
+    v-card-actions
+      slot
 </template>
 
 <script>

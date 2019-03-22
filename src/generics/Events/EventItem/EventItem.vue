@@ -1,7 +1,7 @@
 <template lang="pug">
 mixin ImgSection
   v-flex(
-    :md6="!noImg" :md4="noImg" 
+    :md6="!noImg" :md3="noImg" 
     :style="{ 'order': (reverse? 1: 0) }"
   ).img__section
     div(
@@ -17,12 +17,12 @@ mixin ImgSection
 
 mixin TextSection
   v-flex(
-    :md6="!noImg" :md8="noImg" 
+    :md6="!noImg" :md9="noImg" 
     :style="{ 'order': (reverse? 0: 1) }"
   ).text__section.pa-4
-    .title.mb-3 {{ event.name }}
+    .title.accent--font.mb-3 {{ event.name }}
     .excerpt.body-1.mb-2 {{ event.excerpt }}
-    .date.body-2 {{ event.date }}
+    .date.grey3--text.body-2 {{ event.date }}
 
 v-layout(
   :style="{ flexWrap: (!reverse? 'wrap': 'wrap-reverse' )}"
@@ -30,7 +30,7 @@ v-layout(
   @mouseleave="highlighted = false"
   :class="{ 'elevation-5': highlighted, 'elevation-19': !highlighted }"
   @click="$emit('click')"
-).event-item.my-3.background
+).event-item.my-3
   +ImgSection
   +TextSection
 </template>
