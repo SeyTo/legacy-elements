@@ -8,7 +8,7 @@ v-dialog(
   :fullscreen="$vuetify.breakpoint.xsOnly"
   scrollable).activity-dialog
   v-card
-    v-toolbar(v-if="$vuetify.breakpoint.xsOnly || title" dense flat)
+    v-toolbar(v-if="$vuetify.breakpoint.xsOnly || title" dense flat).transparent
       .title.accent--font.info--text {{ title }}
       v-btn(absolute icon right @click="$emit('input', false)").my-0
         v-icon mdi-close

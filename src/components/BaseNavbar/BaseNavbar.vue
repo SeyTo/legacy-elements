@@ -6,17 +6,17 @@ v-toolbar(
   :absolute="false"
   height="72px"
   :color="baseColor"
-)
+).base-navbar
   v-toolbar-items
     v-btn(
       flat icon large 
       v-if="lbtn_visible" 
       @click="lbtn_action"
     )
-      v-icon {{ $store.state.basenavbar.lbtn.icon }}
+      v-icon {{ lbtn_icon }}
   v-toolbar-title(@click="$emit('click:title')")
     img(v-if="titleIsImg" :src="logo")
-    span(v-else) {{ logo }}
+    span(v-else).accent--font.accent--text {{ logo }}
 
   v-spacer
 
@@ -28,24 +28,9 @@ v-toolbar(
       flat icon large 
       @click="rbtn_action"
     )
-      v-icon {{ $store.state.basenavbar.rbtn.icon }}
+      v-icon {{ rbtn_icon }}
 
 </template>
-
-<style lang="stylus" scoped>
-.v-toolbar
-  z-index 3 !important
-
-  .v-toolbar__title
-    height 100%
-    img
-      margin 16% 0 16% 0
-      max-height 68%
-    span
-      height 72px
-      text-decoration none
-      line-height 72px
-</style>
 
 <script>
 /**
@@ -81,8 +66,10 @@ export default {
       else return this.title
     },
     ...mapState({
+      lbtn_icon: state => state.basenavbar.lbtn.icon,
       lbtn_visible: state => state.basenavbar.lbtn.visible,
       lbtn_action: state => state.basenavbar.lbtn.action,
+      rbtn_icon: state => state.basenavbar.rbtn.icon,
       rbtn_visible: state => state.basenavbar.rbtn.visible,
       rbtn_action: state => state.basenavbar.rbtn.action
     }),

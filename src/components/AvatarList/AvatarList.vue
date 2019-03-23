@@ -27,6 +27,7 @@ v-list(
 export default {
   name: 'AvatarList',
   props: {
+    // requires each to have { avatar } & from slotted scope { title, subtitle, actionbar } all returns single model as argument.
     models: {
       type: Array,
       default: () => []

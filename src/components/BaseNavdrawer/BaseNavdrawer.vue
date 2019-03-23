@@ -7,18 +7,12 @@ v-navigation-drawer(
   :value="value"
   :mobile-break-point="mobileBreakPoint"
   @input="$emit('input', $event)"
-)
-  v-toolbar(@click="$emit('input', false)" large flat)
-    v-btn(icon left fixed).my-0.mx-2: v-icon mdi mdi-arrow-left
+).base-navdrawer
+  v-toolbar(@click="$emit('input', false)" large flat).transparent
+    v-btn(icon left fixed).mx-2
+      v-icon mdi mdi-arrow-left
   slot
 </template>
-
-<style lang="stylus" scoped>
-.v-navigation-drawer
-  z-index 20
-  .v-toolbar
-    height 72px
-</style>
 
 <script>
 export default {

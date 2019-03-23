@@ -22,7 +22,7 @@ v-speed-dial(
       @click="$emit('click:' + (b.name || index) )"
     ).secondary--btns
       v-icon {{ b.icon }}
-      .outer-text {{ b.text }}
+      .outer-text.accent--font {{ b.text }}
 </template>
 
 <script>

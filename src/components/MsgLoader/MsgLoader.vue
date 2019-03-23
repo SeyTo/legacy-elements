@@ -10,9 +10,6 @@
   ).ma-0
 </template>
 
-<style lang="stylus" scoped>
-</style>
-
 <script>
 export default {
   name: 'MsgLoader',
