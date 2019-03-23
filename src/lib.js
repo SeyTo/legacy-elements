@@ -1,12 +1,16 @@
-// import * as components from './components'
-import './styles/lib.styl'
+import registerComponent from './components'
+import registerGeneric from './generics'
+import storePlugin from './stores/index.js'
 
 const prdinsElements = {
   install (vue, args) {
-    // vue.component('hello', Hello)
-    // vue.component('another', Another)
+    registerComponent(vue)
+    registerGeneric(vue)
   },
   version: '0.0.1'
 }
 
-export default prdinsElements
+export default {
+  elements: prdinsElements,
+  store: storePlugin
+}

@@ -6,9 +6,8 @@ div.countdown
       .body-2 hrs
     v-flex(v-if="!noMin").time-unit {{ countdown.min }} 
       .body-2 min
-    v-flex(v-if="!noSec").time-unit {{ countdown.sec }} 
+    v-flex(v-if="!noSec && !noMin").time-unit {{ countdown.sec }} 
       .body-2 sec
-
 </template>
 
 <script>

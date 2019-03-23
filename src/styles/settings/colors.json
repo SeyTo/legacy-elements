@@ -1,0 +1,31 @@
+{
+  "main": {
+    "primary": {
+      "base": "#faf3dd"
+    },
+    "secondary": {
+      "base": "#f2c078"
+    },
+    "accent": {
+      "base": "#001f54"
+    },
+    "error": {
+      "base": "#ff6b6b"
+    },
+    "info": {
+      "base": "#2c497f"
+    },
+    "success": {
+      "base": "#679436"
+    },
+    "warning": {
+      "base": "#a5be00"
+    },
+    "grey": {
+      "grey1": "#dbdbdb",
+      "grey2": "#b3b3b3",
+      "grey3": "#7e7e7e",
+      "grey4": "#444444"
+    }
+  }
+}
