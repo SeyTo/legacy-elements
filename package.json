@@ -1,6 +1,6 @@
 {
   "name": "prdins-elements",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "components, stores, helpers for prdins fe projects",
   "author": "rajib bajracharya",
   "main": "dist/lib/prdins-elements.min.js",

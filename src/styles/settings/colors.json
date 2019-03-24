@@ -1,13 +1,13 @@
 {
   "main": {
     "primary": {
-      "base": "#faf3dd"
+      "base": "#002147"
     },
     "secondary": {
-      "base": "#f2c078"
+      "base": "#005c87"
     },
     "accent": {
-      "base": "#001f54"
+      "base": "#010400"
     },
     "error": {
       "base": "#ff6b6b"

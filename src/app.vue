@@ -29,16 +29,19 @@
 
         v-layout(row)
           v-flex(:style={ height: '130px' }).primary
+            | primary
           v-flex(:style={ height: '130px' }).secondary
+            | secondary
           v-flex(:style={ height: '130px' }).accent
+            | accent
           v-flex(:style={ height: '130px' }).info
+            | info
           v-flex(:style={ height: '130px' }).error
+            | error
           v-flex(:style={ height: '130px' }).success
+            | success
           v-flex(:style={ height: '130px' }).warning
-          v-flex(:style={ height: '130px' }).grey1
-          v-flex(:style={ height: '130px' }).grey2
-          v-flex(:style={ height: '130px' }).grey3
-          v-flex(:style={ height: '130px' }).grey4
+            | warning
 
         v-layout(row)
           course-item(:course="course").ma-2

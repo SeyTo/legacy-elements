@@ -7,10 +7,10 @@ const prdinsElements = {
     registerComponent(vue)
     registerGeneric(vue)
   },
-  version: '0.0.1'
+  version: '0.1.0'
 }
 
 export default {
-  elements: prdinsElements,
+  components: prdinsElements,
   store: storePlugin
 }
