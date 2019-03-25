@@ -8,7 +8,7 @@ export default {
       primaryAction: null,
       // or set an alternate action when the button is pressed.
       action: () => {},
-      icon: 'mdi mdi-dots-vertical'
+      icon: 'mdi mdi-menu'
     },
     rbtn: {
       visible: false,

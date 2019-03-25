@@ -1,11 +1,10 @@
 <template lang="pug">
 v-toolbar(
   :app="true"
-  :flat="flat"
-  :scroll-off-screen="true"
+  :flat="__flat"
   :absolute="false"
-  height="72px"
-  :color="baseColor"
+  :height="__height"
+  :color="__baseColor"
 ).base-navbar
   v-toolbar-items
     v-btn(
@@ -15,8 +14,12 @@ v-toolbar(
     )
       v-icon {{ lbtn_icon }}
   v-toolbar-title(@click="$emit('click:title')")
-    img(v-if="titleIsImg" :src="logo")
-    span(v-else).accent--font.accent--text {{ logo }}
+    img(
+      v-if="titleIsImg" 
+      :src="__logo"
+      :style="{ padding: __padding }"
+    )
+    span(v-else).accent--font.accent--text {{ __logo }}
 
   v-spacer
 
@@ -44,6 +47,9 @@ import assert from 'assert'
 export default {
   name: 'base-navbar',
   props: {
+    displayMode: {
+      default: true
+    },
     titleSizeSensitive: {},
     title: {
       default: 'Logo'
@@ -51,18 +57,44 @@ export default {
     titleAlternate: {
       default: 'Alter Logo'
     },
-    titleIsImg: {}
+    titleIsImg: {},
+    flat: {},
+    // mode
+    sizeAlternate: {}
   },
   data () {
     return {
-      color: 'transparent',
-      flat: true
+      color: 'white',
+      maxHeight: '92px',
+      minHeight: '72px',
+      maxPadding: '24px 0',
+      minPadding: '16px 0'
     }
   },
   computed: {
-    logo () {
+    __flat () {
+      if (this.displayMode) return true
+      return !!this.flat
+    },
+    __height () {
+      if (this.displayMode && !this.sizeAlternate) {
+        return this.maxHeight
+      }
+      return this.minHeight
+    },
+    __padding () {
+      if (this.__height === this.maxHeight) {
+        return this.maxPadding
+      }
+      return this.minPadding
+    },
+    __scrollOffScreen () {
+      if (this.displayMode) return false
+      return !!this.scrollOffScreen
+    },
+    __logo () {
       if (!this.titleSizeSensitive) return this.title
-      if (this.$vuetify.breakpoint.smAndDown) return this.titleAlternate
+      if (this.sizeAlternate) return this.titleAlternate
       else return this.title
     },
     ...mapState({
@@ -73,7 +105,7 @@ export default {
       rbtn_visible: state => state.basenavbar.rbtn.visible,
       rbtn_action: state => state.basenavbar.rbtn.action
     }),
-    baseColor: {
+    __baseColor: {
       set (v) {
         this.color = v
       },
@@ -84,6 +116,9 @@ export default {
   },
   mounted () {
     assert(this.$store.state.basenavbar, 'Main plugin need to be inserted into vuex store.')
+    // if (this.transparentOnScroll === true) {
+      // window.addEventListener('scroll', this.handleScroll)
+    // }
   },
   methods: {
     /**
@@ -91,19 +126,16 @@ export default {
      */
     handleScroll () {
       if (window.scrollY > 60) {
-        this.baseColor = 'primary'
+        this.__baseColor = 'white'
         this.flat = false
       } else if (window.scrollY < 60) {
-        this.baseColor = 'transparent'
+        this.__baseColor = 'transparent'
         this.flat = true
       }
     }
   },
-  created () {
-    window.addEventListener('scroll', this.handleScroll)
-  },
   destroyed () {
-    window.removeEventListener('scroll', this.handleScroll)
+    // window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
