@@ -5,9 +5,12 @@ v-dialog(
   @input="$emit('input', $event)"
   :width="width"
 ).alert-dialog
-  v-card.pa-3
-    v-card-text.subheading.pb-3
-      span(v-html="message")
+  v-card.pa-2
+    v-card-text.subheading
+      v-layout
+        v-icon(:style="{ fontSize: '2.5rem', color: color }") {{ icon }}
+        v-flex
+          span(v-html="message")
     v-card-actions
       v-spacer
       template(v-for="btn, i in buttons")
@@ -34,6 +37,12 @@ export default {
     },
     width: {
       default: '500px'
+    },
+    icon: {
+      default: ''
+    },
+    color: {
+      default: 'black'
     }
   },
   methods: {

@@ -43,9 +43,11 @@ v-toolbar(
  */
 import { mapState } from 'vuex'
 import assert from 'assert'
+import SizeWatcher from '@/mixins/extends/SizeWatcher'
 
 export default {
   name: 'base-navbar',
+  mixins: [SizeWatcher],
   props: {
     displayMode: {
       default: true
@@ -58,9 +60,7 @@ export default {
       default: 'Alter Logo'
     },
     titleIsImg: {},
-    flat: {},
-    // mode
-    sizeAlternate: {}
+    flat: {}
   },
   data () {
     return {
@@ -77,15 +77,11 @@ export default {
       return !!this.flat
     },
     __height () {
-      if (this.displayMode && !this.sizeAlternate) {
-        return this.maxHeight
-      }
+      if (this.displayMode && !this.sizeHook) return this.maxHeight
       return this.minHeight
     },
     __padding () {
-      if (this.__height === this.maxHeight) {
-        return this.maxPadding
-      }
+      if (this.__height === this.maxHeight) return this.maxPadding
       return this.minPadding
     },
     __scrollOffScreen () {
@@ -94,16 +90,16 @@ export default {
     },
     __logo () {
       if (!this.titleSizeSensitive) return this.title
-      if (this.sizeAlternate) return this.titleAlternate
+      if (this.sizeHook) return this.titleAlternate
       else return this.title
     },
     ...mapState({
-      lbtn_icon: state => state.basenavbar.lbtn.icon,
-      lbtn_visible: state => state.basenavbar.lbtn.visible,
-      lbtn_action: state => state.basenavbar.lbtn.action,
-      rbtn_icon: state => state.basenavbar.rbtn.icon,
-      rbtn_visible: state => state.basenavbar.rbtn.visible,
-      rbtn_action: state => state.basenavbar.rbtn.action
+      lbtn_icon: state => state.eBaseNavbar.lbtn.icon,
+      lbtn_visible: state => state.eBaseNavbar.lbtn.visible,
+      lbtn_action: state => state.eBaseNavbar.lbtn.action,
+      rbtn_icon: state => state.eBaseNavbar.rbtn.icon,
+      rbtn_visible: state => state.eBaseNavbar.rbtn.visible,
+      rbtn_action: state => state.eBaseNavbar.rbtn.action
     }),
     __baseColor: {
       set (v) {
@@ -115,7 +111,7 @@ export default {
     }
   },
   mounted () {
-    assert(this.$store.state.basenavbar, 'Main plugin need to be inserted into vuex store.')
+    assert(this.$store.state.eBaseNavbar, 'Main plugin need to be inserted into vuex store.')
     // if (this.transparentOnScroll === true) {
       // window.addEventListener('scroll', this.handleScroll)
     // }

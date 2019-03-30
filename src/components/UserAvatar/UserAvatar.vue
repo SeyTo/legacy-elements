@@ -17,7 +17,7 @@ export default {
   name: 'user-avatar',
   props: {
     cover: {
-      default: require('@/assets/logo.png')
+      default: require('@/assets/logo-sm.svg')
     },
     /**
      * Set non editable avatar.

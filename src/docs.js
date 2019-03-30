@@ -5,7 +5,7 @@ import store from './stores.js'
 import './plugins/vuetify'
 import App from './app'
 
-import './styles/app.styl'
+import './styles/lib.styl'
 
 import registerComponent from './components'
 import registerGeneric from './generics'

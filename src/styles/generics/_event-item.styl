@@ -1,20 +1,24 @@
 .event-item
-  overflow hidden
-  transition all 0.2s
-  cursor pointer
-
+  max-height 224px
   .img__section
+    background-color #fafafa
     .img__div
       position relative
       height 100%
       min-height 200px
       min-width 200px
+      max-height 224px
       width 100%
     .color__div
       position relative
       height 100%
       min-height 20px
   .text__section
+    max-height 224px
+    overflow-y auto
     text-align left
+    .excerpt
+      // max-height 80px
+      // overflow-y scroll
     .date
       text-align right

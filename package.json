@@ -1,6 +1,6 @@
 {
   "name": "prdins-elements",
-  "version": "0.1.0",
+  "version": "0.1.9",
   "description": "components, stores, helpers for prdins fe projects",
   "author": "rajib bajracharya",
   "main": "dist/lib/prdins-elements.min.js",
@@ -16,7 +16,8 @@
     "build:docs": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "publish:common": "yarn build && yarn pack && cp prdins-elements* ../common/libs/prdins-elements.tgz"
   },
   "dependencies": {
     "@mdi/font": "^3.5.95",

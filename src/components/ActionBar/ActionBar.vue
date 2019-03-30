@@ -43,14 +43,7 @@ export default {
       default: () => []
     }
   },
-  data () {
-    return {}
-  },
   computed: {
-    classes () {
-      return {
-      }
-    },
     btnClasses () {
       return {
         'v-btn--tiny': this.size === 'tiny',
@@ -64,7 +57,6 @@ export default {
       if (!name) return
       this.$emit('click:' + name)
     }
-  },
-  components: {}
+  }
 }
 </script>

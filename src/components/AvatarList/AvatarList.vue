@@ -13,7 +13,7 @@ v-list(
   ).avatar-list__tile
     v-list-tile-avatar
       img(v-if="model.avatar" :src="model.avatar")
-      img(v-else src="../../assets/logo.png")
+      img(v-else src="../../assets/logo-sm.svg")
     v-list-tile-content
       v-list-tile-title
         slot(name="title" :model="model")

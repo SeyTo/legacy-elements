@@ -3,12 +3,14 @@ export default {
   state: {
     visible: true,
     lbtn: {
-      visible: true,
+      visible: false,
       // default action when lbtn is reset.
       primaryAction: null,
       // or set an alternate action when the button is pressed.
       action: () => {},
-      icon: 'mdi mdi-menu'
+      icon: 'mdi mdi-menu',
+      // set of actions for each return pages
+      reserveActions: []
     },
     rbtn: {
       visible: false,
@@ -25,11 +27,13 @@ export default {
       state.lbtn.visible = payload.visible || true
       if (payload.action) state.lbtn.action = payload.action
       if (payload.icon) state.lbtn.icon = payload.icon
+      if (payload.primaryAction) state.lbtn.primaryAction = payload.primaryAction
     },
     setrbtn (state, payload) {
       state.rbtn.visible = payload.visible || true
       if (payload.action) state.rbtn.action = payload.action
       if (payload.icon) state.rbtn.icon = payload.icon
+      if (payload.primaryAction) state.rbtn.primaryAction = payload.primaryAction
     },
     /**
      * Resets the lbtn to its primary action and icon.
@@ -49,14 +53,21 @@ export default {
      */
     setReturnable (state, { visible, router }) {
       state.lbtn.visible = visible || true
-      const reserveAction = state.lbtn.action
+      state.lbtn.icon = 'mdi mdi-arrow-left'
+      // save the original action
+      state.lbtn.reserveActions.push(state.lbtn.action)
       state.lbtn.action = () => {
+        // go back route
         router.go(-1)
         // restore previous functions
-        state.lbtn.icon = 'mdi mdi-dots-vertical'
-        state.lbtn.action = reserveAction
+        state.lbtn.reserveActions.pop()
+        if (state.lbtn.reserveActions.length === 1) {
+          state.lbtn.icon = 'mdi mdi-menu'
+          state.lbtn.action = state.lbtn.reserveActions[0]
+          // remove main action because it will be pushed again
+          state.lbtn.reserveActions = []
+        }
       }
-      state.lbtn.icon = 'mdi mdi-arrow-left'
     },
     hidelbtn (state) {
       state.lbtn.visible = false

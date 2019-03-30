@@ -4,7 +4,6 @@ v-dialog(
   :lazy="lazy"
   :value="value"
   @input="$emit('input', $event)"
-  width="500px"
   :fullscreen="$vuetify.breakpoint.xsOnly"
   scrollable).activity-dialog
   v-card

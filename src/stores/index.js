@@ -1,7 +1,13 @@
-import BaseNavbarStore from './modules/base-navbar.store.js'
-import EleAppStore from './modules/ele-app.store.js'
+import BaseNavbarStore from './modules/eBaseNavbar.store.js'
+import BaseNavdrawerStore from './modules/eBaseNavdrawer.store.js'
+import EleAppStore from './modules/eApp.store.js'
+import EStateMsgStore from './modules/eStateMsg.store.js'
+import EDialogMsgStore from './modules/eDialogMsg.store.js'
 
 export default function (store) {
-  store.registerModule('basenavbar', BaseNavbarStore)
-  store.registerModule('ele-app', EleAppStore)
+  store.registerModule('eApp', EleAppStore)
+  store.registerModule('eBaseNavbar', BaseNavbarStore)
+  store.registerModule('eBaseNavdrawer', BaseNavdrawerStore)
+  store.registerModule('eStateMsg', EStateMsgStore)
+  store.registerModule('eDialogMsg', EDialogMsgStore)
 }
