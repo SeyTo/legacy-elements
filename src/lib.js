@@ -1,5 +1,6 @@
 import registerComponent from './components'
 import registerGeneric from './generics'
+import registerPlugins from './plugins'
 import storePlugin from './stores/index.js'
 
 import { colorOfType, iconOfType } from '@/utils/constants'
@@ -13,6 +14,7 @@ const prdinsElements = {
   install (vue, args) {
     registerComponent(vue)
     registerGeneric(vue)
+    registerPlugins(vue)
   },
   version: '0.1.0'
 }

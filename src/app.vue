@@ -1,7 +1,15 @@
 <template lang="pug">
+  mixin ContentCreator
+    v-container
+      ContentCreator
+
   #app
     v-app
       v-content
+        +ContentCreator    
+        // v-btn(@click="addSection('paragraph')") Add Paragraph
+        // v-btn(@click="addSection('tab')") Add Tab
+        // v-btn(@click="addSection('section')") Add Section
         baseNavbar(
           :title="logoLg"
           :title-alternate="logoSm"
@@ -15,15 +23,15 @@
           v-btn(flat)  Testing
           v-btn(flat)  Testing
 
-        baseNavdrawer(
-          v-model="navdrawer"
-          :navProps="{ dark: true, right: true }"
-        )
+        // baseNavdrawer(
+        //   v-model="navdrawer"
+        //   :navProps="{ dark: true, right: true }"
+        // )
 
-        basicHeader(lg title="This is a basic header" subtitle="Subtitle" :url="image")
+        // basicHeader(lg title="This is a basic header" subtitle="Subtitle" :url="image")
 
-        basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
-        v-container
+        // basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
+        // v-container
           basicHeader(sm noOverlay title="This is a basic header" textColorClass="warning--text")
 
           div(
@@ -186,7 +194,8 @@ export default {
             backgroundColor: 'blue'
           }
         }
-      ]
+      ],
+      sections: []
     }
   },
   methods: {
@@ -202,6 +211,22 @@ export default {
     },
     openAlert () {
       this.showDialog('Hello this is msg')
+    },
+    addNewSection () {
+      this.sections.push('FormSection')
+    },
+    clearAllSections () {
+      this.sections = []
+    },
+    saveAllContent () {
+    },
+    previewMode () {},
+    removeSection (index) {
+      console.log(index)
+      this.sections.splice(index, 1)
+    },
+    selectedThis (index) {
+      console.log(index)
     }
   },
   mounted () {
@@ -217,7 +242,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
