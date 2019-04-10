@@ -1,12 +1,11 @@
 <template lang="pug">
   mixin ContentCreator
     v-container
-      ContentCreator
+      // ContentCreator
 
   #app
     v-app
       v-content
-        +ContentCreator    
         // v-btn(@click="addSection('paragraph')") Add Paragraph
         // v-btn(@click="addSection('tab')") Add Tab
         // v-btn(@click="addSection('section')") Add Section
@@ -129,6 +128,7 @@
 
 <script>
 import GlobalMsg from '@/mixins/helpers/GlobalMsg.js'
+import { formSchema, formLayout } from '@/generics/forms/DynamicForm/examples/example1'
 
 export default {
   name: 'app',
@@ -195,7 +195,9 @@ export default {
           }
         }
       ],
-      sections: []
+      sections: [],
+      formSchema,
+      formLayout
     }
   },
   methods: {

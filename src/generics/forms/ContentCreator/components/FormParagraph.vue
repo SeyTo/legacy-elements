@@ -8,6 +8,8 @@
   ).secondary.white--text
     EditableTitle(defaultTitle='Paragraph' :header.sync="model._header")
     v-spacer
+    v-btn(@click.stop="deleteSelf" icon small).secondary
+      v-icon mdi-delete
     // FormNav(move del @click:del="$emit('click:delete')")
       v-btn(@click="" icon small).secondary
         v-icon mdi-pencil
@@ -32,7 +34,8 @@ import EditableTitle from './helpers/EditableTitle'
 import {
   Selectable,
   Component,
-  Sibling
+  Sibling,
+  Deletable
 } from '../mixins/*'
 import ToolbarEventBus from '../ToolbarEventBus'
 
@@ -41,7 +44,8 @@ export default {
   mixins: [
     Component,
     Selectable,
-    Sibling
+    Sibling,
+    Deletable
   ],
   methods: {
     openEditor () {

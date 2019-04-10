@@ -1,5 +1,5 @@
 /**
- * Find ref from given array of models
+ * Find ref from given array of models. The find is recursive.
  * Algorithm:
  * - iterate through given array primarily to find `__meta.ref`
  *   - if not found then try `container`, then iterate through it
@@ -15,12 +15,12 @@ export const getByRef = function (arr, ref) {
   const iterate = function (arr, ref) {
     if (Array.isArray(arr)) {
       for (let i of arr) {
-        if (i.__meta && i.__meta.ref === ref) {
+        if (i.__meta && i.__meta.ref === ref) { // finally finding it
           model = i
           break
-        } else if (Array.isArray(i.container)) {
+        } else if (Array.isArray(i.container)) { // passing through container
           iterate(i.container, ref)
-        } else if (Array.isArray(i._value)) {
+        } else if (Array.isArray(i._value)) { // passing through _value
           iterate(i._value, ref)
         }
       }
@@ -28,4 +28,48 @@ export const getByRef = function (arr, ref) {
   }
   iterate(arr, ref)
   return model
+}
+
+/**
+ * Finds the container model of a given ref and index of itself in it.
+ * @returns { container, modelIndex }
+ */
+// TODO algorithm incorrect
+export const findContainerOfRef = function (arr, ref) {
+  let container = null
+  let model = null
+  const iterate = function (arr, ref) {
+    if (Array.isArray(arr)) {
+      let index = 0
+      for (let i of arr) {
+        if (i.__meta && i.__meta.ref === ref) {
+          model = index
+          break
+        } else if (Array.isArray(i.container)) {
+          container = i
+          iterate(i.container, ref)
+        } else if (Array.isArray(i._value)) {
+          container = i
+          iterate(i._value, ref)
+        }
+        ++index
+      }
+    } else console.error('is not array')
+  }
+  iterate(arr, ref)
+  return { container, model }
+}
+
+/**
+ * Only helps to find direct index of containing model.
+ * Does not yet account for one containing { header, container } in model._value.
+ */
+export const findIndexOfRef = function (arr, ref) {
+  let index = 0
+  if (!Array.isArray(arr)) return console.error('Given arr is not Array.')
+  for (let model of arr) {
+    if (model.__meta.ref === ref) return index
+    ++index
+  }
+  return null
 }
