@@ -50,7 +50,7 @@ export default {
      * @param element one of the value from this.elements
      */
     pushToModel (model, element) {
-      const Construct = element.model 
+      const Construct = element.model
       this.$store.commit('eContentCreator/pushToModel', { container: model, model: new Construct() })
     }
   }

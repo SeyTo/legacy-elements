@@ -58,7 +58,7 @@ export default {
       console.log(ref, parentRef)
       // TO FUTURE ME: This method has flaw because of how `getByRef` & `findIndexOfRef` iterates.
       // They only iterate through to _value. but what if _value has { container }. The algorithm will need to change again.
-      // This entire model has flaw considering the main objective is to simply produce html. vue-wysiwyg is kindof thing we should be looking at. 
+      // This entire model has flaw considering the main objective is to simply produce html. vue-wysiwyg is kindof thing we should be looking at.
       if (!parentRef || !ref) return console.error('Either parentRef or ref is undefined')
       let container = getByRef(this.$store.state.eContentCreator.sections, parentRef)
       if (!container) return console.debug('Cannot find container by given parentRef')

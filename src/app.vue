@@ -6,10 +6,6 @@
   #app
     v-app
       v-content
-        // +ContentCreator    
-        // v-btn(@click="addSection('paragraph')") Add Paragraph
-        // v-btn(@click="addSection('tab')") Add Tab
-        // v-btn(@click="addSection('section')") Add Section
         baseNavbar(
           :title="logoLg"
           :title-alternate="logoSm"
@@ -23,15 +19,15 @@
           v-btn(flat)  Testing
           v-btn(flat)  Testing
 
-        // baseNavdrawer(
-        //   v-model="navdrawer"
-        //   :navProps="{ dark: true, right: true }"
-        // )
+        baseNavdrawer(
+          v-model="navdrawer"
+          :navProps="{ dark: true, right: true }"
+        )
 
-        // basicHeader(lg title="This is a basic header" subtitle="Subtitle" :url="image")
+        basicHeader(lg title="This is a basic header" subtitle="Subtitle" :url="image")
 
-        // basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
-        // v-container
+        basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
+        v-container
           basicHeader(sm noOverlay title="This is a basic header" textColorClass="warning--text")
 
           div(
@@ -85,12 +81,12 @@
             v-flex(:style={ height: '130px' }).warning
               | warning
 
-          // v-layout(row)
+          v-layout(row)
             courseItem(:course="course").ma-2
             courseItem(:course="course").ma-2
             courseItem(:course="course").ma-2
 
-          // v-layout(row)
+          v-layout(row)
             v-flex
               examItem(:exam="exam").ma-2
             v-flex
@@ -98,15 +94,15 @@
             v-flex
               examItem(:exam="exam").ma-2
 
-          // userAvatar
+          userAvatar
 
-          // eventItem(:event="eventA" :reverse="true").ma-2
+          eventItem(:event="eventA" :reverse="true").ma-2
             template(v-slot:extra="") 
               v-btn(style={ position: "absolute", bottom: 0, right: 0 }) Test
-          // eventItem(:event="eventB" :reverse="false").ma-2
+          eventItem(:event="eventB" :reverse="false").ma-2
             template(v-slot:extra="") 
               v-btn Test
-          // v-layout(wrap)
+          v-layout(wrap)
             v-flex(md6)
               eventItem(:event="eventB" :reverse="false" mini).ma-2
                 template(v-slot:extra="") 
