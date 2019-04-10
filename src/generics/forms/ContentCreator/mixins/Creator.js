@@ -38,15 +38,19 @@ export default {
     }
   },
   methods: {
+    /**
+     * Push new model under this model. Since 'Creator' is only used under Toolbar. This method will become deprecated.
+     */
     createComponent (element) {
       const Construct = element.model
       this.$store.commit('eContentCreator/pushComponent', { ref: this.model.__meta.ref, model: new Construct() })
     },
     /**
-     * Model can also be array to which to directly push to.
+     * Push a given component to given model. Model can also be array to which to directly push to.
+     * @param element one of the value from this.elements
      */
     pushToModel (model, element) {
-      const Construct = element.model
+      const Construct = element.model 
       this.$store.commit('eContentCreator/pushToModel', { container: model, model: new Construct() })
     }
   }

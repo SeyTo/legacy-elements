@@ -1,12 +1,12 @@
 <template lang="pug">
   mixin ContentCreator
     v-container
-      ContentCreator
+      // ContentCreator
 
   #app
     v-app
       v-content
-        +ContentCreator    
+        // +ContentCreator    
         // v-btn(@click="addSection('paragraph')") Add Paragraph
         // v-btn(@click="addSection('tab')") Add Tab
         // v-btn(@click="addSection('section')") Add Section

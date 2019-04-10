@@ -1,10 +1,13 @@
 import { getByRef } from '@/generics/forms/ContentCreator/utils'
 
+/**
+ * Store for ContentCreator
+ */
 export default {
   namespaced: true,
   state: {
     /**
-     * Array of selected refs. [ ref1, ref2 ]. Mainly two selected are stored. at 0 the currently selected and at 1 previous selected.
+     * Array of selected refs. [ ref1, ref2 ]. Mainly two selected are stored. at 1 the currently selected and at 0 previous selected.
      */
     selected: [],
     /**
@@ -16,13 +19,19 @@ export default {
     }
   },
   getters: {
+    /**
+     * Get selected model's ref.
+     */
     getSelected (state) {
-      return state.selected[state.selected.length - 1]
-    },
-    getSelectedModel (state) {
+      return state.selected.length > 0 ? state.selected[state.selected.length - 1] : null
     }
   },
   mutations: {
+    resetSelection (state, ref) {
+      console.log('ressetting')
+      state.selected = []
+    },
+
     setSelected (state, ref) {
       state.selected.push(ref)
       if (state.selected.length > 2) state.selected.shift()
@@ -36,7 +45,9 @@ export default {
      */
     pushComponent (state, { ref, model }) {
       if (!model.__meta) model.__meta = {}
+      // create a random ref name
       model.__meta.ref = model.constructor.name + Date.now()
+      // set FormModel with just string, hope that vue will find the component
       model.__meta.component = 'Form' + model.constructor.name
       if (!ref) {
         // no target specified, appending to root
@@ -51,10 +62,11 @@ export default {
         else _model._value.push(model)
       }
     },
+    /**
+     * Push a model directly into another model. Along with proper __meta data.
+     *
+     */
     pushToModel (state, { container, model }) {
-      console.log('they are')
-      console.log(container)
-      console.log(model)
       if (!model.__meta) model.__meta = {}
       model.__meta.ref = model.constructor.name + Date.now()
       model.__meta.component = 'Form' + model.constructor.name

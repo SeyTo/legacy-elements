@@ -4,6 +4,7 @@ v-layout
   v-btn(@click="creator.visible = true" icon)
     v-icon mdi-plus
 
+  // ask which component to add to this
   v-dialog(
     v-model="creator.visible"
     max-width="300px"
@@ -34,11 +35,14 @@ export default {
   },
   data () {
     return {
+      // active tab
       activeIndex: 0,
+      // temporary inputs and dialogs
       creator: {
         visible: false,
         temp: {}
       },
+      // TODO move all this to toolbar
       btns: [
         { name: 'addcomponent', label: 'Add Component', forefront: false, icon: 'mdi-plus' },
         { name: 'removecomponent', label: 'Remove Component', forefront: false, icon: 'mdi-minus' },
@@ -50,7 +54,6 @@ export default {
       ]
     }
   },
-  computed: {},
   methods: {
     addTab (meta) {
       // just create basic container layout
@@ -58,6 +61,7 @@ export default {
     },
     addTabContent (element) {
       this.creator.visible = false
+      // push to store
       this.pushToModel(this.model._value[this.activeIndex].container, element)
       this.creator.temp = {}
     }
