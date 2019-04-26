@@ -5,6 +5,7 @@ v-toolbar(
   :absolute="false"
   :height="__height"
   :color="__baseColor"
+  v-show="__visible"
 ).base-navbar
   v-toolbar-items
     v-btn(
@@ -99,7 +100,8 @@ export default {
       lbtn_action: state => state.eBaseNavbar.lbtn.action,
       rbtn_icon: state => state.eBaseNavbar.rbtn.icon,
       rbtn_visible: state => state.eBaseNavbar.rbtn.visible,
-      rbtn_action: state => state.eBaseNavbar.rbtn.action
+      rbtn_action: state => state.eBaseNavbar.rbtn.action,
+      __visible: state => state.eBaseNavbar.visible
     }),
     __baseColor: {
       set (v) {

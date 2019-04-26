@@ -4,7 +4,7 @@ div(
   :style="styles"
 ).basic-header.border-radius.pa-3
   v-container(style={ height: '100%', display: 'flex' } align-end).pa-0.text-xs-left
-    .headers
+    .headers(@click="$emit('click:header')").accent--font
       .header__title(
         :class="headerClasses"
         v-html="title"

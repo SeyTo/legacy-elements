@@ -59,7 +59,7 @@ export default {
      * @param { Array } btns should contain array of objects { name, label, class }
      */
     hideDialog (state) {
-      state.dialogMsg.visible = false
+      state.visible = false
     }
   }
 }

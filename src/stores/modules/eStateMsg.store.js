@@ -35,8 +35,8 @@ export default {
     queue (state, { msg, type, timeout }) {
       let _type = type || state.defaults.type
       let _timeout = timeout || state.defaults.timeout
-      let color = colorOfType[type]
-      let icon = iconOfType[type]
+      let color = colorOfType[type] || colorOfType['default']
+      let icon = iconOfType[type] || ''
       state.parcels.push({ msg, type: _type, timeout: _timeout, color, icon })
     },
 

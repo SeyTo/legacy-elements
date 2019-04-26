@@ -24,6 +24,46 @@ npm run unit
 npm test
 ```
 
+## Post installation of component
+
+1. use as vue plugin
+
+`src/plugins/elements.js`
+```js
+    import Vue from 'vue'
+    import Elements from 'prdins-elements'
+
+    Vue.use(Elements.components)
+```
+
+  Important note: when importing Vuetify, you should `import Vuetify from 'vuetify'` and not from `vuetify/lib` which will import all component at one import else you might get error with 'prdins-elements' complaining that they cant find this or that components
+
+2. import into main app
+
+`src/main.js`
+```js
+    import @/plugins/elements
+    import @/plugins/vuetify
+    import 'prdins-elements/src/styles/app.styl'
+
+    import App from '@/App.vue'
+    ...
+```
+
+3. import into store as well (important). Some components depend on the stores.
+
+`src/stores/index.js`
+```js
+    import Elements from 'prdins-elements'
+
+    Vue.use(vuex)
+
+    export default new Vuex.Store({
+      modules: [ ... ],
+      plugins: [ Elements.store ]
+    })
+```
+
 ## Components
 
 1. ActionBar

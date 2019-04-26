@@ -3,8 +3,8 @@
  */
 export default {
   methods: {
-    routeTo (name, param) {
-      this.$router.push({ name, param }, () => {
+    routeTo (name, params, query) {
+      this.$router.push({ name, params, query }, () => {
         // on complete
         this.$store.commit('eBaseNavbar/setReturnable', {
           visible: true,
