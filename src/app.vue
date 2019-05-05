@@ -28,6 +28,8 @@
 
         basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
         v-container
+
+          EditableList(:editable='true' :items='editableList.items' @click:addNewItem='addEditableItem')
           basicHeader(sm noOverlay title="This is a basic header" textColorClass="warning--text")
 
           div(
@@ -191,7 +193,18 @@ export default {
           }
         }
       ],
-      sections: []
+      sections: [],
+      editableList: {
+        items: [
+          {
+            name: 'itema',
+            component: 'v-checkbox',
+            props: {
+              label: 'Item b'
+            }
+          }
+        ]
+      }
     }
   },
   methods: {
@@ -223,6 +236,15 @@ export default {
     },
     selectedThis (index) {
       console.log(index)
+    },
+    addEditableItem () {
+      this.editableList.items.push({
+        name: 'itema',
+        component: 'v-checkbox',
+        props: {
+          label: 'Item b'
+        }
+      })
     }
   },
   mounted () {

@@ -13,6 +13,7 @@ import BasicHeader from './BasicHeader'
 import ContentRenderer from './ContentRenderer'
 import Cloud from './Cloud'
 import TooltipIconBtn from './TooltipIconBtn'
+import EditableList from './EditableList'
 
 export default function registerComponent (vue) {
   vue.component('actionBar', ActionBar)
@@ -30,4 +31,5 @@ export default function registerComponent (vue) {
   vue.component('cloud', Cloud)
   vue.component('contentRenderer', ContentRenderer)
   vue.component('tooltipIconBtn', TooltipIconBtn)
+  vue.component('EditableList', EditableList)
 }
