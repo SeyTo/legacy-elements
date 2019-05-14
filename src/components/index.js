@@ -15,6 +15,7 @@ import Cloud from './Cloud'
 import TooltipIconBtn from './TooltipIconBtn'
 import EditableList from './EditableList'
 import TitleBar from './TitleBar'
+import SearchField from './SearchField'
 
 export default function registerComponent (vue) {
   vue.component('ActionBar', ActionBar)
@@ -34,4 +35,5 @@ export default function registerComponent (vue) {
   vue.component('TooltipIconBtn', TooltipIconBtn)
   vue.component('EditableList', EditableList)
   vue.component('TitleBar', TitleBar)
+  vue.component('SearchField', SearchField)
 }
