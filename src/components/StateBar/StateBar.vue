@@ -8,7 +8,7 @@ v-snackbar(
   multi-line
   color="white"
 ).state-bar
-  .msg__container(v-for="msg in msgs" :key="msg.msg" :style="{ color: msg.color }")
+  .msg__container(v-for="msg, index in msgs" :key="msg.msg + index" :style="{ color: msg.color }")
     v-icon(:style="{ color: msg.color }") {{ msg.icon }}
     .msg.pl-2 {{ msg.msg }}
   v-btn(@click="close" flat).black--text Close

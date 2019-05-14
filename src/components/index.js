@@ -14,22 +14,24 @@ import ContentRenderer from './ContentRenderer'
 import Cloud from './Cloud'
 import TooltipIconBtn from './TooltipIconBtn'
 import EditableList from './EditableList'
+import TitleBar from './TitleBar'
 
 export default function registerComponent (vue) {
-  vue.component('actionBar', ActionBar)
-  vue.component('countdown', Countdown)
-  vue.component('alertDialog', AlertDialog)
-  vue.component('activityDialog', ActivityDialog)
-  vue.component('avatarList', AvatarList)
-  vue.component('userAvatar', UserAvatar)
-  vue.component('msgLoader', MsgLoader)
-  vue.component('speedDial', SpeedDial)
-  vue.component('stateBar', StateBar)
-  vue.component('baseNavbar', BaseNavbar)
-  vue.component('baseNavdrawer', BaseNavdrawer)
-  vue.component('basicHeader', BasicHeader)
-  vue.component('cloud', Cloud)
-  vue.component('contentRenderer', ContentRenderer)
-  vue.component('tooltipIconBtn', TooltipIconBtn)
+  vue.component('ActionBar', ActionBar)
+  vue.component('Countdown', Countdown)
+  vue.component('AlertDialog', AlertDialog)
+  vue.component('ActivityDialog', ActivityDialog)
+  vue.component('AvatarList', AvatarList)
+  vue.component('UserAvatar', UserAvatar)
+  vue.component('MsgLoader', MsgLoader)
+  vue.component('SpeedDial', SpeedDial)
+  vue.component('StateBar', StateBar)
+  vue.component('BaseNavbar', BaseNavbar)
+  vue.component('BaseNavdrawer', BaseNavdrawer)
+  vue.component('BasicHeader', BasicHeader)
+  vue.component('Cloud', Cloud)
+  vue.component('ContentRenderer', ContentRenderer)
+  vue.component('TooltipIconBtn', TooltipIconBtn)
   vue.component('EditableList', EditableList)
+  vue.component('TitleBar', TitleBar)
 }

@@ -4,7 +4,11 @@ div(
   :style="styles"
 ).basic-header.border-radius.pa-3
   v-container(style={ height: '100%', display: 'flex' } align-end).pa-0.text-xs-left
-    .headers(@click="$emit('click:header')").accent--font
+    v-slot(v-if='slotted')
+    .headers(
+      v-if='!slotted'
+      @click="$emit('click:header')" :style={ cursor: 'pointer' }
+    ).accent--font
       .header__title(
         :class="headerClasses"
         v-html="title"
@@ -36,7 +40,8 @@ export default {
     },
     noOverlay: {
       default: false
-    }
+    },
+    slotted: { type: Boolean, default: false }
   },
   computed: {
     classes () {

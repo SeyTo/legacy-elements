@@ -24,6 +24,7 @@
           :navProps="{ dark: true, right: true }"
         )
 
+
         basicHeader(lg title="This is a basic header" subtitle="Subtitle" :url="image")
 
         basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
@@ -52,6 +53,10 @@
               | {{ model.sub }}
 
           stateBar
+
+          v-divider
+          TitleBar(title='testing')
+          v-divider
 
           v-btn(@click="openStateMsg") Open StateMsg
 
@@ -214,14 +219,15 @@ export default {
   },
   methods: {
     openStateMsg () {
-      this.$store.commit('eStateMsg/queue', { msg: 'Hello 10000', type: 'success', timeout: 30000 })
-      this.$store.commit('eStateMsg/queue', { msg: 'Hello 5000', type: 'error', timeout: 5000 })
-      this.$store.commit('eStateMsg/queue', { msg: 'Hello 7000', type: 'info', timeout: 7000 })
-      this.$store.dispatch('eStateMsg/next')
-      setTimeout(() => {
-        this.$store.commit('eStateMsg/queue', { msg: 'Hello NEW 7000', type: 'info', timeout: 45000 })
-        this.$store.dispatch('eStateMsg/next')
-      }, 3000)
+      this.showStateMsg({ msg: 'tesst' })
+      // this.$store.commit('eStateMsg/queue', { msg: 'Hello 10000', type: 'success', timeout: 30000 })
+      // this.$store.commit('eStateMsg/queue', { msg: 'Hello 5000', type: 'error', timeout: 5000 })
+      // this.$store.commit('eStateMsg/queue', { msg: 'Hello 7000', type: 'info', timeout: 7000 })
+      // this.$store.dispatch('eStateMsg/next')
+      // setTimeout(() => {
+      //   this.$store.commit('eStateMsg/queue', { msg: 'Hello NEW 7000', type: 'info', timeout: 45000 })
+      //   this.$store.dispatch('eStateMsg/next')
+      // }, 3000)
     },
     openAlert () {
       this.showDialog('Hello this is msg')
