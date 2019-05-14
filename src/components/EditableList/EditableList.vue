@@ -7,8 +7,9 @@ v-list(
       component(
         :is='item.component' 
         v-bind='item.props'
-        @click='$emit("click:" + item.name, $event)'
+        v-on='item.events'
       )
+        // @click.stop='$emit("click:item", item.name)'
         | {{ item.slot }}
 
   v-btn(
@@ -36,7 +37,7 @@ export default {
     },
     items: {
       type: Array,
-      default: []
+      default: () => []
     }
   }
 }

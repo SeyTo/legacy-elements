@@ -201,6 +201,11 @@ export default {
             component: 'v-checkbox',
             props: {
               label: 'Item b'
+            },
+            events: {
+              click: (event) => {
+                console.log(event)
+              }
             }
           }
         ]
