@@ -10,6 +10,8 @@ v-layout(
           :class="btnClasses"
           @click="emit(btn.name)"
           v-on="on"
+          :disabled='btn.disabled'
+          v-if='!btn.notVisible'
         )
           v-icon {{ btn.icon || '?' }}
       span {{ btn.label || 'label' }}
@@ -25,6 +27,8 @@ v-layout(
 </style>
 
 <script>
+import clone from 'lodash/clone'
+
 export default {
   name: 'ActionBar',
   props: {
@@ -56,6 +60,22 @@ export default {
     emit (name) {
       if (!name) return
       this.$emit('click:' + name)
+    },
+    disabled (disabled, names) {
+      const updated = clone(this.buttons)
+      for (let name of names) {
+        const found = updated.find(btn => btn.name === name)
+        if (found) found.disabled = disabled
+      }
+      this.$emit('update:buttons', updated)
+    },
+    visible (visible, names) {
+      const updated = clone(this.buttons)
+      for (let name of names) {
+        const found = updated.find(btn => btn.name === name)
+        if (found) found.notVisible = !visible
+      }
+      this.$emit('update:buttons', updated)
     }
   }
 }

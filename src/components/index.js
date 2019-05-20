@@ -16,6 +16,7 @@ import TooltipIconBtn from './TooltipIconBtn'
 import EditableList from './EditableList'
 import TitleBar from './TitleBar'
 import SearchField from './SearchField'
+import ModList from './ModList'
 
 export default function registerComponent (vue) {
   vue.component('ActionBar', ActionBar)
@@ -36,4 +37,5 @@ export default function registerComponent (vue) {
   vue.component('EditableList', EditableList)
   vue.component('TitleBar', TitleBar)
   vue.component('SearchField', SearchField)
+  vue.component('ModList', ModList)
 }

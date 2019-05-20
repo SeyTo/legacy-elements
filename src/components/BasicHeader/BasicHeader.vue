@@ -4,20 +4,22 @@ div(
   :style="styles"
 ).basic-header.border-radius.pa-3
   v-container(style={ height: '100%', display: 'flex' } align-end).pa-0.text-xs-left
-    v-slot(v-if='slotted')
-    .headers(
-      v-if='!slotted'
-      @click="$emit('click:header')" :style={ cursor: 'pointer' }
-    ).accent--font
-      .header__title(
-        :class="headerClasses"
-        v-html="title"
-      ).display-1.accent--font
-      .header__subtitle(
-        v-if="!sm"
-        :class="subtitleClasses"
-        v-html="subtitle"
-      ).display-2.accent--font
+    slot(name='prepend')
+    slot
+      .headers(
+        v-if='hideHeaders'
+        @click="$emit('click:header')" :style={ cursor: 'pointer' }
+        :class={ '.cursor': !!url }
+      ).accent--font
+        .header__title(
+          :class="headerClasses"
+          v-html="title"
+        ).display-1.accent--font
+        .header__subtitle(
+          v-if="!sm"
+          :class="subtitleClasses"
+          v-html="subtitle"
+        ).display-2.accent--font
 </template>
 
 <script>
@@ -31,6 +33,7 @@ export default {
       default: ''
     },
     subtitle: { },
+    hideHeaders: { default: false },
     url: { },
     colorClass: {
       default: 'primary'
@@ -40,8 +43,7 @@ export default {
     },
     noOverlay: {
       default: false
-    },
-    slotted: { type: Boolean, default: false }
+    }
   },
   computed: {
     classes () {

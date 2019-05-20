@@ -30,7 +30,23 @@
         basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
         v-container
 
-          EditableList(:editable='true' :items='editableList.items' @click:addNewItem='addEditableItem')
+          ActionBar(
+            ref='testbuttons'
+            :buttons.sync='testButtons'
+          )
+          | {{ testButtons }}
+          ModList(:items='modList' ref='modlist')
+            template(v-slot:prepend='{}')
+              ActionBar(
+                :buttons='modLists.actions' 
+                @click:delete='modListDelete' 
+                @click:move='modListMove'
+              )
+            template(v-slot:item='{ item, index }')
+              | {{ index }}.&nbsp
+              // input(:value='index' @keyup.enter='changeModListIndex(index)' ref='modlistinput')
+              | {{ item.name }}
+          // EditableList(:editable='true' :items='editableList.items' @click:addNewItem='addEditableItem')
           basicHeader(sm noOverlay title="This is a basic header" textColorClass="warning--text")
 
           div(
@@ -101,7 +117,7 @@
             v-flex
               examItem(:exam="exam").ma-2
 
-          userAvatar
+          userAvatar(size='large')
 
           eventItem(:event="eventA" :reverse="true").ma-2
             template(v-slot:extra="") 
@@ -199,6 +215,24 @@ export default {
         }
       ],
       sections: [],
+      modList: [
+        {
+          name: 'Name A',
+          label: 'Hello A'
+        },
+        {
+          name: 'Name B',
+          label: 'Hello B'
+        },
+        {
+          name: 'Name C',
+          label: 'Hello C'
+        },
+        {
+          name: 'Name D',
+          label: 'Hello D'
+        }
+      ],
       editableList: {
         items: [
           {
@@ -212,6 +246,40 @@ export default {
                 console.log(event)
               }
             }
+          }
+        ]
+      },
+      testButtons: [
+        {
+          icon: 'mdi-delete',
+          label: 'Delete',
+          name: 'delete',
+          notVisible: false,
+          disabled: false
+        },
+        {
+          icon: 'mdi-arrow-up',
+          label: 'Move',
+          name: 'move',
+          notVisible: false,
+          disabled: false
+        }
+      ],
+      modLists: {
+        actions: [
+          {
+            icon: 'mdi-delete',
+            label: 'Delete',
+            name: 'delete',
+            notVisible: false,
+            disabled: false
+          },
+          {
+            icon: 'mdi-arrow-up',
+            label: 'Move',
+            name: 'move',
+            notVisible: false,
+            disabled: false
           }
         ]
       }
@@ -256,11 +324,29 @@ export default {
           label: 'Item b'
         }
       })
+    },
+    modListMove (index) {
+      console.log('move')
+      // this.$refs.modlist.getSelected()
+    },
+    modListDelete (index) {
+      console.log('delete')
+    },
+    changeModListIndex (index) {
+      const newIndex = this.$refs.modlistinput.value
+      if (index === newIndex && newIndex > this.modList.length && newIndex < 0) return
+      console.log('newIndex', newIndex)
+      console.log('index', index)
+      this.modList.splice(newIndex, 0, this.modList[index])
+      if (newIndex > index) this.modList.splice(index - 1, 1)
+      else if (newIndex < index) this.modList.splice(index + 1, 1)
     }
   },
   mounted () {
     this.$store.commit('eBaseNavbar/showrbtn')
     this.$store.commit('eBaseNavbar/setlbtn', { visible: true, action: () => { this.navdrawer = !this.navdrawer } })
+    this.$refs.testbuttons.disabled(true, ['delete'])
+    this.$refs.testbuttons.visible(false, ['move'])
     this.resetDialog()
   }
 }
