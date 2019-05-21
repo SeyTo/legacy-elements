@@ -26,6 +26,8 @@
 
 
         basicHeader(lg title="This is a basic header" subtitle="Subtitle" :url="image")
+          template(v-slot:prepend='{}')
+            UserAvatar(size='large').ma-3
 
         basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
         v-container
@@ -33,7 +35,11 @@
           ActionBar(
             ref='testbuttons'
             :buttons.sync='testButtons'
+            @click:move='testmove'
+            @click:delete='testdelete'
           )
+          v-btn(@click='testmove')
+          v-btn(@click='testdelete')
           | {{ testButtons }}
           ModList(:items='modList' ref='modlist')
             template(v-slot:prepend='{}')
@@ -340,13 +346,19 @@ export default {
       this.modList.splice(newIndex, 0, this.modList[index])
       if (newIndex > index) this.modList.splice(index - 1, 1)
       else if (newIndex < index) this.modList.splice(index + 1, 1)
+    },
+    testmove () {
+      console.log('move')
+      this.$refs.testbuttons.visible(false, ['delete'])
+    },
+    testdelete () {
+      console.log('show')
+      this.$refs.testbuttons.visible(false, ['move'])
     }
   },
   mounted () {
     this.$store.commit('eBaseNavbar/showrbtn')
     this.$store.commit('eBaseNavbar/setlbtn', { visible: true, action: () => { this.navdrawer = !this.navdrawer } })
-    this.$refs.testbuttons.disabled(true, ['delete'])
-    this.$refs.testbuttons.visible(false, ['move'])
     this.resetDialog()
   }
 }

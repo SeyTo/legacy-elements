@@ -2,24 +2,26 @@
 div(
   :class="classes"
   :style="styles"
-).basic-header.border-radius.pa-3
+).basic-header.border-radius.pa-1
   v-container(style={ height: '100%', display: 'flex' } align-end).pa-0.text-xs-left
-    slot(name='prepend')
-    slot
-      .headers(
-        v-if='hideHeaders'
-        @click="$emit('click:header')" :style={ cursor: 'pointer' }
-        :class={ '.cursor': !!url }
-      ).accent--font
-        .header__title(
-          :class="headerClasses"
-          v-html="title"
-        ).display-1.accent--font
-        .header__subtitle(
-          v-if="!sm"
-          :class="subtitleClasses"
-          v-html="subtitle"
-        ).display-2.accent--font
+    v-layout
+      div
+        v-layout(:column='column')
+          slot(name='prepend')
+          slot
+            .headers(
+              @click="$emit('click:header')" :style={ cursor: 'pointer' }
+              :class={ '.cursor': !!url }
+            ).accent--font
+              .header__title(
+                :class="headerClasses"
+                v-html="title"
+              ).accent--font
+              .header__subtitle(
+                v-if="!sm"
+                :class="subtitleClasses"
+                v-html="subtitle"
+              ).accent--font
 </template>
 
 <script>
@@ -29,21 +31,13 @@ export default {
     sm: { },
     md: { },
     lg: { },
-    title: {
-      default: ''
-    },
+    title: { default: '' },
+    column: { default: true },
     subtitle: { },
-    hideHeaders: { default: false },
     url: { },
-    colorClass: {
-      default: 'primary'
-    },
-    textColorClass: {
-      default: 'white--text'
-    },
-    noOverlay: {
-      default: false
-    }
+    colorClass: { default: 'primary' },
+    textColorClass: { default: 'white--text' },
+    noOverlay: { default: false }
   },
   computed: {
     classes () {

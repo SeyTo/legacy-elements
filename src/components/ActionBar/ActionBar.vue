@@ -63,17 +63,23 @@ export default {
     },
     disabled (disabled, names) {
       const updated = clone(this.buttons)
-      for (let name of names) {
-        const found = updated.find(btn => btn.name === name)
-        if (found) found.disabled = disabled
+      for (let btn of updated) {
+        if (names.includes(btn.name)) {
+          btn.disabled = disabled
+        } else {
+          btn.disabled = false
+        }
       }
       this.$emit('update:buttons', updated)
     },
     visible (visible, names) {
       const updated = clone(this.buttons)
-      for (let name of names) {
-        const found = updated.find(btn => btn.name === name)
-        if (found) found.notVisible = !visible
+      for (let btn of updated) {
+        if (names.includes(btn.name)) {
+          btn.notVisible = !visible
+        } else {
+          btn.notVisible = false
+        }
       }
       this.$emit('update:buttons', updated)
     }
