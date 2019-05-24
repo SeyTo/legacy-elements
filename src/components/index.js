@@ -17,6 +17,7 @@ import EditableList from './EditableList'
 import TitleBar from './TitleBar'
 import SearchField from './SearchField'
 import ModList from './ModList'
+import SimpleMsg from './SimpleMsg'
 
 export default function registerComponent (vue) {
   vue.component('ActionBar', ActionBar)
@@ -38,4 +39,5 @@ export default function registerComponent (vue) {
   vue.component('TitleBar', TitleBar)
   vue.component('SearchField', SearchField)
   vue.component('ModList', ModList)
+  vue.component('SimpleMsg', SimpleMsg)
 }
