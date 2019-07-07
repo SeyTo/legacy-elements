@@ -14,6 +14,7 @@
           :display-mode="true"
           :flat="false"
           :sizeHook="$vuetify.breakpoint.smAndDown"
+          watchLBtn
         )
           v-btn(flat)  Testing
           v-btn(flat)  Testing
@@ -32,6 +33,7 @@
         basicHeader(md noOverlay title="This is a basic header" colorClass="secondary").my-2
         v-container
 
+          SearchField
           ActionBar(
             ref='testbuttons'
             :buttons.sync='testButtons'

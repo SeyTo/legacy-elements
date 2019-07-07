@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.search-field
   v-text-field(
     v-model='term'
     @keyup.enter='search'
@@ -7,6 +7,7 @@ div
     :solo='true'
     :flat='true'
     :label='label'
+    round
   )
 </template>
 

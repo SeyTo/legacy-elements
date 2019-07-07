@@ -24,7 +24,8 @@ export default {
      * Helps to initialize the leftButton visibility and action. The visibility is by default true because we assume that use wants to see the button if they have applied an action to it.
      */
     setlbtn (state, payload) {
-      state.lbtn.visible = payload.visible || true
+      if (payload.visible === undefined) state.lbtn.visible = false
+      else state.lbtn.visible = payload.visible
       if (payload.action) state.lbtn.action = payload.action
       if (payload.icon) state.lbtn.icon = payload.icon
       if (payload.primaryAction) state.lbtn.primaryAction = payload.primaryAction

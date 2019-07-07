@@ -7,7 +7,7 @@ v-toolbar(
   :color="__baseColor"
   v-show="__visible"
 ).base-navbar
-  v-toolbar-items
+  v-toolbar-items(:dump='__watchLBtn')
     v-btn(
       flat icon large 
       v-if="lbtn_visible" 
@@ -50,18 +50,18 @@ export default {
   name: 'base-navbar',
   mixins: [SizeWatcher],
   props: {
-    displayMode: {
-      default: true
-    },
+    // a abstract mode that can change height/transparency etc
+    displayMode: { default: true },
+    // title icon changes with size
     titleSizeSensitive: {},
-    title: {
-      default: 'Logo'
-    },
-    titleAlternate: {
-      default: 'Alter Logo'
-    },
+    // default logo can be text or url
+    title: { default: 'Logo' },
+    // when size is small
+    titleAlternate: { default: 'Alter Logo' },
     titleIsImg: {},
-    flat: {}
+    flat: {},
+    // use this only with `sizeHook` prop. Toggle Lbtn by watching size.
+    watchLBtn: {}
   },
   data () {
     return {
@@ -110,6 +110,13 @@ export default {
       get () {
         return this.color
       }
+    },
+    __watchLBtn () {
+      if (this.sizeHook === undefined) return
+      const visible = this.sizeHook
+      console.log('calling', visible)
+      if (visible) this.$store.commit('eBaseNavbar/showlbtn')
+      else this.$store.commit('eBaseNavbar/hidelbtn')
     }
   },
   mounted () {
